@@ -71,7 +71,7 @@ delay: for all correct actions, the supervisor does not have to act and can let
 the robot being autonomous, only in cases where the proposed action is
 incorrect, the supervisor has to step in.
 
-\subsection{SPARC: Supervised Progressive Autonomous Robot Competencies}
+\subsection{SPARC: Supervised Progressively Autonomous Robot Competencies}
 
 When the robot is interacting in a Supervised Autonomous fashion, it can also
 use the human inputs to improve its behaviour over time. Combined with
@@ -167,10 +167,19 @@ these studies were not teaching social behaviours. We are designing a new study
 to explore how to teach a robot how to interact with children in an educative
 game. 
 
-Children will interact with a touchscreen on a game designed to teach food nets:
-which animals eat which ones. And the robot will be used to provide feedback
-and encouragements to the child. This teaching behaviour will be taught by an
-adult using a graphical user interface on a tablet (see Figure~\ref{fig:setup}).
+Children will interact with a touchscreen on a game designed to teach food web:
+interconnected food chains present in nature. The game has 10 animals and 3
+vegetals and the children will learn what each animal is eating.
+The robot will be used to provide feedback, advices and
+encouragements to the child. And this teaching behaviour will be taught by an adult
+using a graphical user interface on a tablet (see Figure~\ref{fig:setup}).
+
+The state will combine both features from the games such are the relative
+positions between the animals or their status and more social features, such as
+where the child is looking. And the actions will be game-related as moving
+animals or providing feeback related the last child actions. Or more social
+actions such as drawing the attention of the child to certain elements of the
+game.
 
 \begin{figure}
     \centering
