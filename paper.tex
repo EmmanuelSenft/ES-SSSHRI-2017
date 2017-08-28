@@ -40,18 +40,18 @@ learn how to interact socially. Furthermore, as the context of interaction and
 the partners can evolve over times, robots have to continuously update their
 behaviour.  The problem of improving an action policy over time by interacting
 in an environment is well represented by Reinforcement Learning. Powerful tools
-exist to improve an agent behaviour as it is evolving in an environment. By
-maximising a reward function evaluating the agent's actions, it can improve its
+exist to improve an agent's behaviour as it is evolving in an environment. By
+maximising a reward function evaluating its actions, the agent can improve its
 behaviour over time. 
 
 However classic methods in Reinforcement Learning rely on exploration, often
-random, to acquire information on the environment and generally requires many
+random, to acquire information on the environment and generally require many
 iterations to converge to an appropriate action policy. When interacting with
 humans in the real world, acquiring data can take a prohibitive amount time, and the
 risk of exploration can be high: failing to satisfy expectations from human
-partners can annoy the partner or even lead to the end of the interaction. To
+partners can annoy them or even lead to the end of the interaction. To
 tackle this issue, we propose to make use of a human supervisor to guide the
-robot behaviour, preventing it to make mistakes and demonstrating it a correct
+robot's behaviour, preventing it to make mistakes and demonstrating it a correct
 action policy.
 
 \section{Proposition}
@@ -61,7 +61,7 @@ action policy.
 Robots cannot have optimal behaviours, especially in the early stages of
 learning. To address this drawback, we propose the concept of Supervised
 Autonomy: a robot is mostly autonomous, but supervised by a human. Before
-executing an actions, the robot proposes this action to a supervisor who is able
+executing an action, the robot proposes this action to a supervisor who is able
 to correct it before execution, ensuring that only actions validated by a human
 are executed. This provides robustness against suboptimal action policy or sensory
 errors.
@@ -78,7 +78,8 @@ use the human inputs to improve its behaviour over time. Combined with
 algorithms from the Reinforcement Learning field or other algorithms directly
 mapping inputs to actions, this approach ensures that the behaviour of the robot
 is constantly correct and the frequency of intervention from the supervisor
-decreases as the robot learns.
+decreases as the robot learns. We called this method: SPARC for Supervised
+Progressively Autonomous Robot Competencies.
 
 Other methods using humans to teach a robot how to interact often use the
 teacher only to label actions from the robot or to provide corrective behaviours
@@ -112,7 +113,7 @@ The first study \cite{senft2015sparc} involved 10 participants teaching a
 teacher robot how to provide feedback to a learner in a classification task. For
 the sake of the study, the learner was modeled by a second robot whose behaviour
 was impacted by the teacher robot's action. This study used a simple feedforward
-neural network to map state to action. As shown in Figure~\ref{fig:ICSR},
+neural network to map the state to action. As shown in Figure~\ref{fig:ICSR},
 compared to a Wizard of Oz interaction (where the human has to select manually
 all the actions executed by the robot), SPARC can achieve a similar performance
 while requiring a lower number of inputs.
@@ -132,17 +133,17 @@ while requiring a lower number of inputs.
 The second study \cite{senft2017supervised} used Sophie's Kitchen, the
 environment proposed by Thomaz and Breazeal in~\cite{thomaz2008teachable} to
 explore how a human supervisor can teach a robot to complete a task in a
-deterministic environment. The learning algorithm is from the Reinforcement
-Learning field, the agent receives rewards and learns how to maximise the
-rewards obtained to reach an efficient action policy and complete the task. This
-study involved 40 participants teaching the robot how to complete the task in
-two conditions. In the Interactive Reinforcement Learning condition, the teacher can
-provide feedback and limited guidance to the robot. In the second condition,
-SPARC, the teacher is informed of the action the robot is about to execute and
-can correct it before execution. With SPARC, the rewards are implicit, each
-action executed by the robot is rewarded with $+1$ as it received the approval
-from the teacher either explicitely (if selected) or implicitely (if letting be
-executed). 
+deterministic and discrete environment. The learning algorithm is from the
+Reinforcement Learning field, the agent receives rewards from the environment or
+the human teacher and learns how to maximise these rewards to reach an efficient
+action policy and complete the task. This study involved 40 participants
+teaching the robot how to complete the task in two conditions. In the
+Interactive Reinforcement Learning condition, the teacher can provide feedback
+and limited guidance to the robot. In the second condition, SPARC, the teacher
+is informed of the action the robot is about to execute and can correct it
+before execution. With SPARC, the rewards are implicit, each action executed by
+the robot is rewarded with $+1$ as it received the approval from the teacher
+either explicitely (if selected) or implicitely (if letting be executed). 
 
 As shown in Figure~\ref{fig:film}, during the first interaction with an
 algorithm, participants reached a higher performance with SPARC compared to IRL,
@@ -151,7 +152,7 @@ the teaching process.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{film.pdf}
+    \includegraphics[width=0.99\linewidth]{film.pdf}
     \caption{Comparison of performance, teaching time, number of failure during
     teaching and number of inputs providing for the conditions: IRL and SPARC.}
     \label{fig:film}
@@ -169,21 +170,21 @@ game.
 
 Children will interact with a touchscreen on a game designed to teach food web:
 interconnected food chains present in nature. The game has 10 animals and 3
-vegetals and the children will learn what each animal is eating.
-The robot will be used to provide feedback, advices and
-encouragements to the child. And this teaching behaviour will be taught by an adult
-using a graphical user interface on a tablet (see Figure~\ref{fig:setup}).
+plants and the children will learn what each animal is eating.  The robot will
+be used to provide feedback, advices and encouragements to the child. And this
+teaching behaviour will be taught by an adult using a graphical user interface
+on a tablet (see Figure~\ref{fig:setup}).
 
 The state will combine both features from the games such are the relative
 positions between the animals or their status and more social features, such as
 where the child is looking. And the actions will be game-related as moving
-animals or providing feeback related the last child actions. Or more social
-actions such as drawing the attention of the child to certain elements of the
-game.
+animals. Or more social actions such as drawing the attention of the child to
+certain elements of the game or providing feeback related the last action
+executed by the child.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{setup.pdf}
+    \includegraphics[width=0.99\linewidth]{setup.pdf}
     \caption{Setup for the future study to teach a robot to interact with
     children.}
     \label{fig:setup}
