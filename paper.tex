@@ -33,36 +33,38 @@ To have meaningful social interaction with humans, robots have to be able to imp
 \section{Introduction}
 
 Social interactions are complex environments governed by a large number of
-social norms and where any participants have a high number of expections on the
+social norms and where all participants have a high number of expections on the
 others.  As it seems impossible to provide directly a robot with all the
-knowledge required to interact with humans, we argue that robots need to be able
-to learn how to interact socially. Furthermore, as the context of interaction
-and the partners can evolve over times, robots have to continuously update their
+knowledge required to behave in society, we argue that robots need to be able to
+learn how to interact socially. Furthermore, as the context of interaction and
+the partners can evolve over times, robots have to continuously update their
 behaviour.  The problem of improving an action policy over time by interacting
 in an environment is well represented by Reinforcement Learning. Powerful tools
 exist to improve an agent behaviour as it is evolving in an environment. By
-maximising a reward function rating behaviours of the agents, it can improve its
-behaviour to behaviour over time. 
+maximising a reward function evaluating the agent's actions, it can improve its
+behaviour over time. 
 
-However classic method in Reinforcement Learning are relying on exploration,
-often random to acquire information on the environment and generally requires
-many iterations to converge to an appropriate action policy. When interacting
-with humans in the real world, acquiring data can take a prohibitive time, and
-the risk of exploration can be high: failing to satisfy expectations from human
-partners can lead to the end of the interaction or annoy the partners. To tackle
-this issue, we propose to make use of a human supervisor to guide the robot
-behaviour, preventing it to make mistakes and demonstrating it a correct action
-policy.
+However classic method in Reinforcement Learning rely on exploration, often
+random, to acquire information on the environment and generally requires many
+iterations to converge to an appropriate action policy. When interacting with
+humans in the real world, acquiring data can take a prohibitive time, and the
+risk of exploration can be high: failing to satisfy expectations from human
+partners can annoy the partner or even lead to the end of the interaction. To
+tackle this issue, we propose to make use of a human supervisor to guide the
+robot behaviour, preventing it to make mistakes and demonstrating it a correct
+action policy.
 
 \section{Proposition}
 
 \subsection{Supervised Autonomy}
 
 Robots cannot have optimal behaviours, especially in the early stages of
-learning. The idea behind Supervised Autonomy is to have a robot mostly
-autonomous, but supervised by a human. Before executing an actions, the robot
-proposes this action to a supervisor who is able to correct it before execution,
-ensuring that only actions validated by a human are executed. 
+learning. To address this drawback, we propose the concept of Supervised
+Autonomy: a robot is mostly autonomous, but supervised by a human. Before
+executing an actions, the robot proposes this action to a supervisor who is able
+to correct it before execution, ensuring that only actions validated by a human
+are executed. This provides robustness against suboptimal action policy or sensory
+errors.
 
 This validation of action is combined with an automatic execution after a short
 delay: for all correct actions, the supervisor does not have to act and can let
@@ -73,16 +75,16 @@ incorrect, the supervisor has to step in.
 
 When the robot is interacting in a Supervised Autonomous fashion, it can also
 use the human inputs to improve its behaviour over time. Combined with
-algorithms from the Reinforcement Learning field or other direct mapping
-inputs-action, this approach ensures that the behaviour of the robot is
-constantly correct and the frequency of intervention from the supervisor
+algorithms from the Reinforcement Learning field or other algorithms directly
+mapping inputs to actions, this approach ensures that the behaviour of the robot
+is constantly correct and the frequency of intervention from the supervisor
 decreases as the robot learns.
 
-Other methods using humans to teach a robot how to interact often use the human
-only to label actions from the robot, to provide corrective behaviours once the
-robot has made a mistake or have the robot request a demonstration from the
-human when its confidence in the output of the learning algorithm is too low.
-On the other hand, SPARC aims to give control over the robot's action to a
+Other methods using humans to teach a robot how to interact often use the
+teacher only to label actions from the robot or to provide corrective behaviours
+once the robot has made a mistake or have the robot request a demonstration from
+the human when the robot's confidence in the output of the learning algorithm is too
+low.  On the other hand, SPARC aims to give control over the robot's action to a
 teacher to ensure a high performing action policy at every step of the
 interaction.  Figure~\ref{fig:comparison} show an illustrative comparison
 between SPARC and other learning methods. By giving control on \emph{every}
@@ -106,20 +108,21 @@ promising results.
 
 \subsection{Initial Eploration with Direct Mapping}
 
-The first study \cite{senft2015sparc} involved 10 participants teaching a teacher robot how to provide
-feedback to a learner in a classification task. For the sake of the study, the
-learner was modeled by a second robot with a behaviour impacted by the teacher
-robot. This study used a simple feedforward neural network to map state to
-action. As shown in Figure~\ref{fig:ICSR}, compared to Wizard of Oz interaction
-(the human has to select manually all the actions executed by the robot), SPARC
-can achieve a similar performance while requiring a lower number of inputs.
+The first study \cite{senft2015sparc} involved 10 participants teaching a
+teacher robot how to provide feedback to a learner in a classification task. For
+the sake of the study, the learner was modeled by a second robot whose behaviour
+was impacted by the teacher robot's action. This study used a simple feedforward
+neural network to map state to action. As shown in Figure~\ref{fig:ICSR},
+compared to a Wizard of Oz interaction (where the human has to select manually
+all the actions executed by the robot), SPARC can achieve a similar performance
+while requiring a lower number of inputs.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{ICSR.pdf}
     \caption{Comparison of workload on human teacher and performance of the robot
     for two control scenario: SPARC and a random suggestion equivalent to a
-    Wizard of Oz control}
+    Wizard of Oz control.}
     \label{fig:ICSR}
 \end{figure}
 
@@ -133,17 +136,18 @@ deterministic environment. The learning algorithm is from the Reinforcement
 Learning field, the agent receives rewards and learns how to maximise the
 rewards obtained to reach an efficient action policy and complete the task. This
 study involved 40 participants teaching the robot how to complete the task in
-two condition. In the Interactive Reinforcement Learning, the teacher can
-provide feedback and provide guidance to the robot to execute some actions. In
-the second condition, SPARC, the teacher is informed of which action the robot
-is about to execute and can correct it before execution. With SPARC, the rewards
-are implicit, each action executed by the robot is rewarded with $+1$ as it
-received the approval from the teacher either explicitely (if selected) or
-implicitely (if letting be executed). 
+two conditions. In the Interactive Reinforcement Learning condition, the teacher can
+provide feedback and limited guidance to the robot. In the second condition,
+SPARC, the teacher is informed of the action the robot is about to execute and
+can correct it before execution. With SPARC, the rewards are implicit, each
+action executed by the robot is rewarded with $+1$ as it received the approval
+from the teacher either explicitely (if selected) or implicitely (if letting be
+executed). 
 
 As shown in Figure~\ref{fig:film}, during the first interaction with an
 algorithm, participants reached a higher performance with SPARC compared to IRL,
-while requirering less inputs, less time and reaching less failure states.
+while requirering less inputs, less time and reaching less failure states during
+the teaching process.
 
 \begin{figure}
     \centering
